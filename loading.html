@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,,shrink-to-fit=no" name="viewport">
+  <title>loading</title>
+  <style type="text/css">.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+  }
+  .loading-con {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 326px;
+    height: 278px;
+  }
+  .loading:after {
+    display: inline-block;
+    content: '';
+    height: 100%;
+    vertical-align: middle;
+  }
+  .loading-gear {
+    -webkit-transform: rotate(7deg);
+        -ms-transform: rotate(7deg);
+            transform: rotate(7deg);
+    top: 16px;
+    left: 66px;
+    position: absolute;
+    width: 84px;
+    height: 84px;
+    -webkit-animation: rotate1 11s linear infinite;
+            animation: rotate1 11s linear infinite;
+  }
+  .loading-gear:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 28%;
+    height: 28%;
+    background-color: #fff;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    -webkit-box-shadow: -5px -5px 10px #00b5ca;
+            box-shadow: -5px -5px 10px #00b5ca;
+  }
+  .loading-gear-angle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: -webkit-gradient(linear, left top, left bottom, from(#00d0e9), to(#00bacf));
+    background: -webkit-linear-gradient(top, #00d0e9, #00bacf);
+    background: -o-linear-gradient(top, #00d0e9, #00bacf);
+    background: linear-gradient(180deg, #00d0e9, #00bacf);
+    -webkit-border-radius: 14%;
+            border-radius: 14%;
+    -webkit-box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.16);
+            box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.16);
+    /* 解决父元素因 transform 使 z-index 失效的问题
+      * https://stackoverflow.com/questions/20851452/z-index-is-canceled-by-setting-transformrotate
+      */
+  }
+  .loading-gear-angle:nth-of-type(2) {
+    background: -webkit-linear-gradient(315deg, #00d0e9, #00bacf);
+    background: -o-linear-gradient(315deg, #00d0e9, #00bacf);
+    background: linear-gradient(135deg, #00d0e9, #00bacf);
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .loading-gear-angle_shadow {
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(225deg, #00d0e9, #00bacf);
+    background: -o-linear-gradient(225deg, #00d0e9, #00bacf);
+    background: linear-gradient(225deg, #00d0e9, #00bacf);
+    -webkit-border-radius: inherit;
+            border-radius: inherit;
+  }
+  .loading-gear-angle_shadow:before,
+  .loading-gear-angle_shadow:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    -webkit-box-shadow: -3px 20px 15px rgba(0, 0, 0, 0.16);
+            box-shadow: -3px 20px 15px rgba(0, 0, 0, 0.16);
+    -webkit-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  .loading-gear-angle_shadow:after {
+    left: auto;
+    right: -6px;
+    -webkit-transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  .loading-gear2 {
+    -webkit-transform: rotate(-6deg);
+        -ms-transform: rotate(-6deg);
+            transform: rotate(-6deg);
+    top: 26px;
+    left: 186px;
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    -webkit-animation: rotate2 11s linear infinite;
+            animation: rotate2 11s linear infinite;
+  }
+  .loading-gear2:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 28%;
+    height: 28%;
+    background-color: #fff;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    -webkit-box-shadow: -5px -5px 10px #91bb00;
+            box-shadow: -5px -5px 10px #91bb00;
+  }
+  .loading-gear2-angle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: -webkit-gradient(linear, left top, left bottom, from(#a9da00), to(#93be00));
+    background: -webkit-linear-gradient(top, #a9da00, #93be00);
+    background: -o-linear-gradient(top, #a9da00, #93be00);
+    background: linear-gradient(180deg, #a9da00, #93be00);
+    -webkit-border-radius: 14%;
+            border-radius: 14%;
+    -webkit-box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.16);
+            box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.16);
+    /* 解决父元素因 transform 使 z-index 失效的问题
+      * https://stackoverflow.com/questions/20851452/z-index-is-canceled-by-setting-transformrotate
+      */
+  }
+  .loading-gear2-angle:nth-of-type(2) {
+    background: -webkit-linear-gradient(315deg, #a9da00, #93be00);
+    background: -o-linear-gradient(315deg, #a9da00, #93be00);
+    background: linear-gradient(135deg, #a9da00, #93be00);
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .loading-gear2-angle_shadow {
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(225deg, #a9da00, #93be00);
+    background: -o-linear-gradient(225deg, #a9da00, #93be00);
+    background: linear-gradient(225deg, #a9da00, #93be00);
+    -webkit-border-radius: inherit;
+            border-radius: inherit;
+  }
+  .loading-gear2-angle_shadow:before,
+  .loading-gear2-angle_shadow:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    -webkit-box-shadow: -3px 20px 15px rgba(0, 0, 0, 0.16);
+            box-shadow: -3px 20px 15px rgba(0, 0, 0, 0.16);
+    -webkit-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  .loading-gear2-angle_shadow:after {
+    left: auto;
+    right: -6px;
+    -webkit-transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  .loading-gear3 {
+    top: 108px;
+    left: 113px;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    -webkit-animation: rotate3 11s linear infinite;
+            animation: rotate3 11s linear infinite;
+  }
+  .loading-gear3:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 28%;
+    height: 28%;
+    background-color: #fff;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    -webkit-box-shadow: -5px -5px 10px #ff9049;
+            box-shadow: -5px -5px 10px #ff9049;
+  }
+  .loading-gear3-angle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffa368), to(#ff8052));
+    background: -webkit-linear-gradient(top, #ffa368, #ff8052);
+    background: -o-linear-gradient(top, #ffa368, #ff8052);
+    background: linear-gradient(180deg, #ffa368, #ff8052);
+    -webkit-border-radius: 14%;
+            border-radius: 14%;
+    -webkit-box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.16);
+            box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.16);
+    /* 解决父元素因 transform 使 z-index 失效的问题
+      * https://stackoverflow.com/questions/20851452/z-index-is-canceled-by-setting-transformrotate
+      */
+  }
+  .loading-gear3-angle:nth-of-type(2) {
+    background: -webkit-linear-gradient(315deg, #ffa368, #ff8052);
+    background: -o-linear-gradient(315deg, #ffa368, #ff8052);
+    background: linear-gradient(135deg, #ffa368, #ff8052);
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .loading-gear3-angle_shadow {
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(225deg, #ffa368, #ff8052);
+    background: -o-linear-gradient(225deg, #ffa368, #ff8052);
+    background: linear-gradient(225deg, #ffa368, #ff8052);
+    -webkit-border-radius: inherit;
+            border-radius: inherit;
+  }
+  .loading-gear3-angle_shadow:before,
+  .loading-gear3-angle_shadow:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    bottom: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    -webkit-box-shadow: -3px 20px 15px rgba(0, 0, 0, 0.16);
+            box-shadow: -3px 20px 15px rgba(0, 0, 0, 0.16);
+    -webkit-transform: rotate(20deg);
+        -ms-transform: rotate(20deg);
+            transform: rotate(20deg);
+  }
+  .loading-gear3-angle_shadow:after {
+    left: auto;
+    right: -6px;
+    -webkit-transform: rotate(10deg);
+        -ms-transform: rotate(10deg);
+            transform: rotate(10deg);
+  }
+  .loading-text {
+    margin-top: 240px;
+    font-size: 24px;
+    color: #ffcb2d;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .loading-text-dot {
+    display: inline-block;
+    -webkit-transform: translateY(-6px);
+        -ms-transform: translateY(-6px);
+            transform: translateY(-6px);
+  }
+  .loading-text-dot:nth-of-type(1) {
+    -webkit-animation: 'type@i' 1s linear infinite;
+            animation: 'type@i' 1s linear infinite;
+    -webkit-animation-delay: 0.15s;
+            animation-delay: 0.15s;
+  }
+  @-webkit-keyframes 'type@i' {
+    0%,
+    100% {
+      -webkit-transform: translateY(-6px);
+              transform: translateY(-6px);
+    }
+    20%,
+    80% {
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px);
+    }
+  }
+  @keyframes 'type@i' {
+    0%,
+    100% {
+      -webkit-transform: translateY(-6px);
+              transform: translateY(-6px);
+    }
+    20%,
+    80% {
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px);
+    }
+  }
+  .loading-text-dot:nth-of-type(2) {
+    -webkit-animation: 'type@i' 1s linear infinite;
+            animation: 'type@i' 1s linear infinite;
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+  }
+  @keyframes 'type@i' {
+    0%,
+    100% {
+      -webkit-transform: translateY(-6px);
+              transform: translateY(-6px);
+    }
+    20%,
+    80% {
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px);
+    }
+  }
+  .loading-text-dot:nth-of-type(3) {
+    -webkit-animation: 'type@i' 1s linear infinite;
+            animation: 'type@i' 1s linear infinite;
+    -webkit-animation-delay: 0.45s;
+            animation-delay: 0.45s;
+  }
+  @keyframes 'type@i' {
+    0%,
+    100% {
+      -webkit-transform: translateY(-6px);
+              transform: translateY(-6px);
+    }
+    20%,
+    80% {
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px);
+    }
+  }
+  .loading-line {
+    position: absolute;
+    z-index: -3;
+    height: 4px;
+    width: 80px;
+    background-color: #ffab47;
+  }
+  .loading-line1 {
+    top: 70px;
+    left: 0;
+  }
+  .loading-line1:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffab47;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+  }
+  .loading-line1:before {
+    left: 0;
+  }
+  .loading-line2 {
+    top: 80px;
+    left: 20px;
+  }
+  .loading-line2:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffab47;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+  }
+  .loading-line2:before {
+    left: 0;
+  }
+  .loading-line3 {
+    top: 98px;
+    left: 20px;
+  }
+  .loading-line3:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffab47;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+  }
+  .loading-line3:before {
+    left: 0;
+  }
+  .loading-line3 {
+    top: 102px;
+    left: 20px;
+  }
+  .loading-line3:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffab47;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+  }
+  .loading-line3:before {
+    left: 0;
+  }
+  .loading-line4 {
+    top: 34px;
+    left: 238px;
+    width: 40px;
+  }
+  .loading-line5 {
+    top: 44px;
+    left: 248px;
+    width: 40px;
+  }
+  .loading-line6 {
+    top: 20px;
+    left: 271px;
+    width: 40px;
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  .loading-line6:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffab47;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+  }
+  .loading-line6:before {
+    right: -1px;
+  }
+  .loading-line7 {
+    top: 30px;
+    left: 281px;
+    width: 40px;
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+  .loading-line7:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffab47;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+  }
+  .loading-line7:before {
+    right: -1px;
+  }
+  .loading-line8 {
+    top: 160px;
+    left: 216px;
+    width: 50px;
+  }
+  .loading-line9 {
+    top: 176px;
+    left: 200px;
+    width: 50px;
+  }
+  .loading-line10 {
+    top: 192px;
+    left: 184px;
+    width: 50px;
+  }
+  .loading-line11 {
+    top: 166px;
+    left: 256px;
+    width: 16px;
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  .loading-line12 {
+    top: 182px;
+    left: 240px;
+    width: 16px;
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  .loading-line13 {
+    top: 198px;
+    left: 224px;
+    width: 16px;
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  .loading-line14 {
+    top: 172px;
+    left: 264px;
+    width: 20px;
+  }
+  .loading-line14:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffab47;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+  }
+  .loading-line14:before {
+    right: -1px;
+  }
+  .loading-line15 {
+    top: 188px;
+    left: 248px;
+    width: 20px;
+  }
+  .loading-line15:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffab47;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+  }
+  .loading-line15:before {
+    right: -1px;
+  }
+  .loading-line16 {
+    top: 204px;
+    left: 232px;
+    width: 90px;
+  }
+  .loading-line16:before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffab47;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+  }
+  .loading-line16:before {
+    right: -1px;
+  }
+  .loading-light1 {
+    margin: 30px 0 0 -9px;
+    position: absolute;
+  }
+  .loading-light1-ball {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: #d4d4d4;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    -webkit-box-shadow: -4px -4px 5px rgba(0, 0, 0, 0.15) inset, 5px 5px 5px rgba(255, 255, 255, 0.25) inset;
+            box-shadow: -4px -4px 5px rgba(0, 0, 0, 0.15) inset, 5px 5px 5px rgba(255, 255, 255, 0.25) inset;
+    -webkit-animation: flash 4s linear infinite;
+            animation: flash 4s linear infinite;
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+  }
+  .loading-light1-ball:before,
+  .loading-light1-ball:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    z-index: 4;
+    width: 3px;
+    height: 3px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .loading-light1-ball:after {
+    top: 5px;
+    left: 12px;
+    width: 2px;
+    height: 2px;
+  }
+  .loading-light1-flash {
+    position: absolute;
+    top: 12px;
+    right: -16px;
+    width: 8px;
+    height: 2px;
+    background: #d4d4d4;
+    -webkit-transform: rotate(-4deg);
+        -ms-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+    -webkit-animation: flash 4s linear infinite;
+            animation: flash 4s linear infinite;
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+  }
+  .loading-light1-flash:before,
+  .loading-light1-flash:after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    right: 1px;
+    width: 8px;
+    height: 2px;
+    background: #d4d4d4;
+    -webkit-transform: rotate(-22deg);
+        -ms-transform: rotate(-22deg);
+            transform: rotate(-22deg);
+    -webkit-animation: flash 4s linear infinite;
+            animation: flash 4s linear infinite;
+    -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+  }
+  .loading-light1-flash:after {
+    top: -13px;
+    right: 4px;
+    -webkit-transform: rotate(-50deg);
+        -ms-transform: rotate(-50deg);
+            transform: rotate(-50deg);
+  }
+  .loading-light1-stand {
+    position: absolute;
+    margin: 4px 0 0 9px;
+    width: 12px;
+    height: 6px;
+    background-color: #9bbbd1;
+  }
+  .loading-light1-stand:after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    width: 12px;
+    height: 8px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#d4d4d4), to(#f0efe5));
+    background: -webkit-linear-gradient(top, #d4d4d4, #f0efe5);
+    background: -o-linear-gradient(top, #d4d4d4, #f0efe5);
+    background: linear-gradient(180deg, #d4d4d4, #f0efe5);
+    -webkit-box-shadow: -4px -1px 5px rgba(0, 0, 0, 0.15) inset, 2px 2px 5px rgba(255, 255, 255, 0.25) inset;
+            box-shadow: -4px -1px 5px rgba(0, 0, 0, 0.15) inset, 2px 2px 5px rgba(255, 255, 255, 0.25) inset;
+    z-index: -1;
+  }
+  .loading-light2 {
+    margin: 164px 0 0 300px;
+    position: absolute;
+  }
+  .loading-light2-ball {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background: #f4e119;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    -webkit-box-shadow: -4px -4px 5px rgba(0, 0, 0, 0.15) inset, 5px 5px 5px rgba(255, 255, 255, 0.25) inset;
+            box-shadow: -4px -4px 5px rgba(0, 0, 0, 0.15) inset, 5px 5px 5px rgba(255, 255, 255, 0.25) inset;
+    -webkit-animation: flash 4s linear infinite;
+            animation: flash 4s linear infinite;
+    -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+  }
+  .loading-light2-ball:before,
+  .loading-light2-ball:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    z-index: 4;
+    width: 3px;
+    height: 3px;
+    -webkit-border-radius: 50%;
+            border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  .loading-light2-ball:after {
+    top: 5px;
+    left: 12px;
+    width: 2px;
+    height: 2px;
+  }
+  .loading-light2-flash {
+    position: absolute;
+    top: 12px;
+    right: -16px;
+    width: 8px;
+    height: 2px;
+    background: #f4e119;
+    -webkit-transform: rotate(-4deg);
+        -ms-transform: rotate(-4deg);
+            transform: rotate(-4deg);
+    -webkit-animation: flash 4s linear infinite;
+            animation: flash 4s linear infinite;
+    -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+  }
+  .loading-light2-flash:before,
+  .loading-light2-flash:after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    right: 1px;
+    width: 8px;
+    height: 2px;
+    background: #f4e119;
+    -webkit-transform: rotate(-22deg);
+        -ms-transform: rotate(-22deg);
+            transform: rotate(-22deg);
+    -webkit-animation: flash 4s linear infinite;
+            animation: flash 4s linear infinite;
+    -webkit-animation-delay: 2s;
+            animation-delay: 2s;
+  }
+  .loading-light2-flash:after {
+    top: -13px;
+    right: 4px;
+    -webkit-transform: rotate(-50deg);
+        -ms-transform: rotate(-50deg);
+            transform: rotate(-50deg);
+  }
+  .loading-light2-stand {
+    position: absolute;
+    margin: 4px 0 0 9px;
+    width: 12px;
+    height: 6px;
+    background-color: #9bbbd1;
+  }
+  .loading-light2-stand:after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+    width: 12px;
+    height: 8px;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f4e119), to(#f4df00));
+    background: -webkit-linear-gradient(top, #f4e119, #f4df00);
+    background: -o-linear-gradient(top, #f4e119, #f4df00);
+    background: linear-gradient(180deg, #f4e119, #f4df00);
+    -webkit-box-shadow: -4px -1px 5px rgba(0, 0, 0, 0.15) inset, 2px 2px 5px rgba(255, 255, 255, 0.25) inset;
+            box-shadow: -4px -1px 5px rgba(0, 0, 0, 0.15) inset, 2px 2px 5px rgba(255, 255, 255, 0.25) inset;
+    z-index: -1;
+  }
+  @-webkit-keyframes rotate1 {
+    from {
+      -webkit-transform: rotate(7deg);
+              transform: rotate(7deg);
+    }
+    to {
+      -webkit-transform: rotate(-353deg);
+              transform: rotate(-353deg);
+    }
+  }
+  @keyframes rotate1 {
+    from {
+      -webkit-transform: rotate(7deg);
+              transform: rotate(7deg);
+    }
+    to {
+      -webkit-transform: rotate(-353deg);
+              transform: rotate(-353deg);
+    }
+  }
+  @-webkit-keyframes rotate2 {
+    from {
+      -webkit-transform: rotate(-6deg);
+              transform: rotate(-6deg);
+    }
+    to {
+      -webkit-transform: rotate(-366deg);
+              transform: rotate(-366deg);
+    }
+  }
+  @keyframes rotate2 {
+    from {
+      -webkit-transform: rotate(-6deg);
+              transform: rotate(-6deg);
+    }
+    to {
+      -webkit-transform: rotate(-366deg);
+              transform: rotate(-366deg);
+    }
+  }
+  @-webkit-keyframes rotate3 {
+    from {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @keyframes rotate3 {
+    from {
+      -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes flash {
+    0%,
+    100% {
+      background: #f0efe5;
+    }
+    20%,
+    85% {
+      background: #ebe17b;
+    }
+    40%,
+    70% {
+      background: #ffe900;
+    }
+  }
+  @keyframes flash {
+    0%,
+    100% {
+      background: #f0efe5;
+    }
+    20%,
+    85% {
+      background: #ebe17b;
+    }
+    40%,
+    70% {
+      background: #ffe900;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="loading">
+    <div class="loading-con">
+      <div class="loading-lines">
+        <div class="loading-line loading-line1"></div>
+        <div class="loading-line loading-line2"></div>
+        <div class="loading-line loading-line3"></div>
+        <div class="loading-line loading-line4"></div>
+        <div class="loading-line loading-line5"></div>
+        <div class="loading-line loading-line6"></div>
+        <div class="loading-line loading-line7"></div>
+        <div class="loading-line loading-line8"></div>
+        <div class="loading-line loading-line9"></div>
+        <div class="loading-line loading-line10"></div>
+        <div class="loading-line loading-line11"></div>
+        <div class="loading-line loading-line12"></div>
+        <div class="loading-line loading-line13"></div>
+        <div class="loading-line loading-line14"></div>
+        <div class="loading-line loading-line15"></div>
+        <div class="loading-line loading-line16"></div>
+      </div>
+        <div class="loading-lights">
+          <div class="loading-light1">
+            <div class="loading-light1-ball"></div>
+            <div class="loading-light1-flash"></div>
+            <div class="loading-light1-stand"></div>
+          </div>
+          <div class="loading-light2">
+            <div class="loading-light2-ball"></div>
+            <div class="loading-light2-flash"></div>
+            <div class="loading-light2-stand"></div>
+          </div>
+        </div>
+        <div class="loading-gear">
+          <div class="loading-gear-angle"></div>
+          <div class="loading-gear-angle">
+            <div class="loading-gear-angle_shadow"></div>
+          </div>
+        </div>
+        <div class="loading-gear2">
+          <div class="loading-gear2-angle"></div>
+          <div class="loading-gear2-angle">
+            <div class="loading-gear2-angle_shadow"></div>
+          </div>
+        </div>
+        <div class="loading-gear3">
+          <div class="loading-gear3-angle"></div>
+          <div class="loading-gear3-angle">
+            <div class="loading-gear3-angle_shadow"></div>
+          </div>
+        </div>
+        <p class="loading-text">
+          loading
+          <span class="loading-text-dot">.</span>
+          <span class="loading-text-dot">.</span>
+          <span class="loading-text-dot">.</span>
+        </p>
+    </div>
+  </div>
+</body>
+</html>
