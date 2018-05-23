@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,,shrink-to-fit=no" name="viewport">
   <title>loading</title>
-  <style type="text/css">.loading {
+<style type="text/css">.loading {
     position: fixed;
     top: 0;
     left: 0;
@@ -295,12 +295,12 @@
             transform: translateY(-6px);
   }
   .loading-text-dot:nth-of-type(1) {
-    -webkit-animation: 'type@i' 1s linear infinite;
-            animation: 'type@i' 1s linear infinite;
+    -webkit-animation: type1 1s linear infinite;
+            animation: type1 1s linear infinite;
     -webkit-animation-delay: 0.15s;
             animation-delay: 0.15s;
   }
-  @-webkit-keyframes 'type@i' {
+  @-webkit-keyframes type1 {
     0%,
     100% {
       -webkit-transform: translateY(-6px);
@@ -312,7 +312,7 @@
               transform: translateY(6px);
     }
   }
-  @keyframes 'type@i' {
+  @keyframes type1 {
     0%,
     100% {
       -webkit-transform: translateY(-6px);
@@ -325,12 +325,24 @@
     }
   }
   .loading-text-dot:nth-of-type(2) {
-    -webkit-animation: 'type@i' 1s linear infinite;
-            animation: 'type@i' 1s linear infinite;
+    -webkit-animation: type2 1s linear infinite;
+            animation: type2 1s linear infinite;
     -webkit-animation-delay: 0.3s;
             animation-delay: 0.3s;
   }
-  @keyframes 'type@i' {
+  @-webkit-keyframes type2 {
+    0%,
+    100% {
+      -webkit-transform: translateY(-6px);
+              transform: translateY(-6px);
+    }
+    20%,
+    80% {
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px);
+    }
+  }
+  @keyframes type2 {
     0%,
     100% {
       -webkit-transform: translateY(-6px);
@@ -343,12 +355,24 @@
     }
   }
   .loading-text-dot:nth-of-type(3) {
-    -webkit-animation: 'type@i' 1s linear infinite;
-            animation: 'type@i' 1s linear infinite;
+    -webkit-animation: type3 1s linear infinite;
+            animation: type3 1s linear infinite;
     -webkit-animation-delay: 0.45s;
             animation-delay: 0.45s;
   }
-  @keyframes 'type@i' {
+  @-webkit-keyframes type3 {
+    0%,
+    100% {
+      -webkit-transform: translateY(-6px);
+              transform: translateY(-6px);
+    }
+    20%,
+    80% {
+      -webkit-transform: translateY(6px);
+              transform: translateY(6px);
+    }
+  }
+  @keyframes type3 {
     0%,
     100% {
       -webkit-transform: translateY(-6px);
@@ -872,7 +896,7 @@
       background: #ffe900;
     }
   }
-  </style>
+</style>
 </head>
 <body>
   <div class="loading">
