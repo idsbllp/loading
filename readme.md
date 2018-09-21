@@ -9,5 +9,3 @@
 ```
 
 [demo](https://idsbllp.github.io/loading/index.html)
-
-> 重点是 [这个](https://github.com/idsbllp/react-kit)
